@@ -1,0 +1,17 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg bg-body-tertiary mb-5">
+    <div class="container-fluid">
+        
+      <img  class="navbar-brand logo-img border" src="https://img.freepik.com/vector-premium/cuadrado-colorido_530521-281.jpg" alt="">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="navbar-brand nav-item">
+            <a class="nav-link active" aria-current="page" [routerLink]="['/home']">Home</a>
+          </li>
+        </ul>
+        <a class="no-style" [routerLink]="['/newuser']">Usuario nuevo</a>
+      </div>
+    </div>
+</nav>
