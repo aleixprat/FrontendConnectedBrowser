@@ -20,6 +20,9 @@ import { UpsertCompanyComponent } from './components/company/upsert-company/upse
 import { TableCompanyComponent } from './components/company/table-company/table-company.component';
 import { RegisterComponent } from './components/register/register/register.component';
 import { LoginComponent } from './components/login/login/login.component';
+import { TableRequestComponent } from './components/request/table-request/table-request.component';
+import { ViewRequestComponent } from './components/request/view-request/view-request.component';
+import { UpsertRequestComponent } from './components/request/upsert-request/upsert-request.component';
 
 
 @NgModule({
@@ -37,7 +40,10 @@ import { LoginComponent } from './components/login/login/login.component';
     UpsertCompanyComponent,
     TableCompanyComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    TableRequestComponent,
+    ViewRequestComponent,
+    UpsertRequestComponent
   ],
   imports: [
     BrowserModule,

@@ -28,6 +28,7 @@ export class RegisterComponent {
   async onSubmit() {
     const response = await this.usersService.register(this.formValues.value);
 
+    //Comprobamos que se ha insertado
     if (!response.insertId) {
       return this.notificacionesService.showError("Registro erroneo");
     }
@@ -37,6 +38,7 @@ export class RegisterComponent {
       return this.notificacionesService.showError(response.fatal);
     } 
 
+    //Notificamos que ha ido correctamente y redirigimos para que se haga login
     this.notificacionesService.showInfo("Se ha registrado correctamente, procede a logearse.");
     this.router.navigate(['/login']);
   }

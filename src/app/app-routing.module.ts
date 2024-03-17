@@ -13,6 +13,7 @@ import { TableUserComponent } from './components/user/table-user/table-user.comp
 import { ViewUserComponent } from './components/user/view-user/view-user.component';
 import { RegisterComponent } from './components/register/register/register.component';
 import { LoginComponent } from './components/login/login/login.component';
+import { TableRequestComponent } from './components/request/table-request/table-request.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -26,6 +27,11 @@ const routes: Routes = [
     component: LoginComponent,
     canActivate: [LoginGuard],
     data: {pantallaLogin : true}
+  },
+  { path: 'avisos', 
+    component: TableRequestComponent,
+    canActivate: [LoginGuard,RoleGuard],
+    data: {role : [RolesService.roleRegular, RolesService.roleAdmin]}
   },
   { path: 'companies', 
     component: TableCompanyComponent,

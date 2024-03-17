@@ -1,0 +1,35 @@
+<!--<div class="wp">
+    <a [hidden]="!elementoHabilitado" [routerLink]="['/',propiedadesTabla.url_param,'nuevo']" class="btn-edit">Crear nuevo</a>
+</div>-->
+<hr class="mb-2">
+<div class="table-responsive-sm overflow-x-scroll">
+    <table class="table table-striped table-container" > 
+        <thead> 
+            <tr class="thead"> 
+                <th><span>ID</span></th> 
+                <th><span>Nombre</span></th> 
+                <th><span>Descripción</span></th> 
+                <th><span>url</span></th> 
+                <th><span>Talla</span></th> 
+                <th><span>Hay Stock?</span></th> 
+                <th><span>Usuario</span></th>
+                <th><span>Empresa</span></th>
+            </tr> 
+        </thead> 
+        <tbody> 
+
+            <ng-container *ngFor="let row of requests">
+            <tr>
+                <td class="table-td">{{row.id}}</td>
+                <td class="table-td">{{row.name}}</td>
+                <td class="table-td">{{row.description}}</td>
+                <td class="table-td">{{row.url}}</td>
+                <td class="table-td">{{row.size}}</td>
+                <td class="table-td">{{row.is_stock}}</td>
+                <td class="table-td">{{row.user_id}}</td>
+                <td class="table-td">{{row.company_id}}</td>
+            </tr>
+            </ng-container>
+        </tbody> 
+    </table>
+</div>
