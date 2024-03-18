@@ -22,7 +22,11 @@ import { RegisterComponent } from './components/register/register/register.compo
 import { LoginComponent } from './components/login/login/login.component';
 import { TableRequestComponent } from './components/request/table-request/table-request.component';
 import { ViewRequestComponent } from './components/request/view-request/view-request.component';
-import { UpsertRequestComponent } from './components/request/upsert-request/upsert-request.component';
+import { DeleteButtonComponent } from './components/utils/delete-button/delete-button.component';
+import { TableAvisoComponent } from './components/aviso/table-aviso/table-aviso.component';
+import { ViewAvisoComponent } from './components/aviso/view-aviso/view-aviso.component';
+import { UpsertAvisoComponent } from './components/aviso/upsert-aviso/upsert-aviso.component';
+import { EditButtonComponent } from './components/utils/edit-button/edit-button.component';
 
 
 @NgModule({
@@ -43,7 +47,11 @@ import { UpsertRequestComponent } from './components/request/upsert-request/upse
     LoginComponent,
     TableRequestComponent,
     ViewRequestComponent,
-    UpsertRequestComponent
+    DeleteButtonComponent,
+    TableAvisoComponent,
+    ViewAvisoComponent,
+    UpsertAvisoComponent,
+    EditButtonComponent
   ],
   imports: [
     BrowserModule,

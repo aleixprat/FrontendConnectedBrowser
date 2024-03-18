@@ -14,6 +14,8 @@ import { ViewUserComponent } from './components/user/view-user/view-user.compone
 import { RegisterComponent } from './components/register/register/register.component';
 import { LoginComponent } from './components/login/login/login.component';
 import { TableRequestComponent } from './components/request/table-request/table-request.component';
+import { TableAvisoComponent } from './components/aviso/table-aviso/table-aviso.component';
+import { ViewRequestComponent } from './components/request/view-request/view-request.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home'},
@@ -28,8 +30,23 @@ const routes: Routes = [
     canActivate: [LoginGuard],
     data: {pantallaLogin : true}
   },
-  { path: 'avisos', 
+  { path: 'requests', 
     component: TableRequestComponent,
+    canActivate: [LoginGuard,RoleGuard],
+    data: {role : [RolesService.roleAdmin]}
+  },
+  { path: 'requests/new', 
+    component: ViewRequestComponent,
+    canActivate: [LoginGuard,RoleGuard],
+    data: {role : [ RolesService.roleAdmin]}
+  },
+  { path: 'requests/:id', 
+    component: ViewRequestComponent,
+    canActivate: [LoginGuard,RoleGuard],
+    data: {role : [RolesService.roleAdmin]}
+  },
+  { path: 'misavisos', 
+    component: TableAvisoComponent,
     canActivate: [LoginGuard,RoleGuard],
     data: {role : [RolesService.roleRegular, RolesService.roleAdmin]}
   },
@@ -38,12 +55,12 @@ const routes: Routes = [
     canActivate: [LoginGuard,RoleGuard],
     data: {role : [RolesService.roleRegular, RolesService.roleAdmin]}
   },
-  { path: 'company/:id', 
+  { path: 'companies/:id', 
     component: ViewCompanyComponent,
     canActivate: [LoginGuard,RoleGuard],
     data: {role : [ RolesService.roleAdmin]}
   },
-  { path: 'company/new', 
+  { path: 'companies/new', 
     component: UpsertCompanyComponent,
     canActivate: [LoginGuard,RoleGuard],
     data: {role : [ RolesService.roleAdmin]}
@@ -53,12 +70,12 @@ const routes: Routes = [
     canActivate: [LoginGuard,RoleGuard],
     data: {role : [ RolesService.roleAdmin]}
   },
-  { path: 'user/:id', 
+  { path: 'users/:id', 
     component: ViewUserComponent,
     canActivate: [LoginGuard,RoleGuard],
     data: {role : [ RolesService.roleAdmin]}
   },
-  { path: 'user/new', 
+  { path: 'users/new', 
     component: UpsertUserComponent,
     canActivate: [LoginGuard,RoleGuard],
     data: {role : [ RolesService.roleAdmin]}

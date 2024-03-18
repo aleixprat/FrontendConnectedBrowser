@@ -11,9 +11,11 @@
                 <th><span>Descripción</span></th> 
                 <th><span>url</span></th> 
                 <th><span>Talla</span></th> 
-                <th><span>Hay Stock?</span></th> 
+                <th><span>Stcok</span></th> 
                 <th><span>Usuario</span></th>
                 <th><span>Empresa</span></th>
+                <th><span>Editar</span></th>
+                <th><span>Borrar</span></th>
             </tr> 
         </thead> 
         <tbody> 
@@ -25,9 +27,18 @@
                 <td class="table-td">{{row.description}}</td>
                 <td class="table-td">{{row.url}}</td>
                 <td class="table-td">{{row.size}}</td>
-                <td class="table-td">{{row.is_stock}}</td>
+                <td class="table-td">
+                    <i *ngIf="row.is_stock == 1" class="fa-solid fa-check fa-2xl color-green"></i>
+                    <i *ngIf="row.is_stock == 0" class="fa-solid fa-ban fa-2xl color-orange"></i>
+                </td>
                 <td class="table-td">{{row.user_id}}</td>
                 <td class="table-td">{{row.company_id}}</td>
+                <td>
+                    <app-edit-button [url_param]="url_param" [id]="row.id" [isIcon]="true"></app-edit-button>
+                </td>
+                <td>
+                    <app-delete-button [url_param]="url_param" [id]="row.id" [isIcon]="true"></app-delete-button>
+                </td>
             </tr>
             </ng-container>
         </tbody> 

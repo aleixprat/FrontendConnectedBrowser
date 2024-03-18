@@ -1,1 +1,90 @@
-<p>view-request works!</p>
+
+<h2 class="mb-1" *ngIf="!isUpdate">Crear una nueva petición</h2>
+
+<div class="d-flex justify-content-between">
+    <h2 class="mb-4" *ngIf="isUpdate">ID: {{id}}</h2>
+    <h2 class="mb-4" *ngIf="isUpdate">Usuario: {{userIdValue}}</h2>
+</div>
+<h5 class="mb-1" *ngIf="isUpdate"><b>Información principal petición</b></h5>
+<hr class="mb-5">
+
+<form class="template mb-5" [formGroup]="requestForm" (ngSubmit)="submitRequest()" >
+    <div class="container mb-5">
+        <div class="row">
+            <div *ngIf="!isUpdate" class="col-md-4 mb-3">
+                <label for="user_id" class="form-label" required>Usuario ID</label>
+                <input type="number" id="user_id" class="form-control" formControlName="user_id">
+                <p class="error" *ngIf="controlError('user_id', 'required')">El campo es obligatorio</p>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="company_id" class="form-label" required>Empresa</label>
+                <input type="text" id="company_id" class="form-control" formControlName="company_id">
+                <p class="error" *ngIf="controlError('url', 'required')">El campo es obligatorio</p>
+            </div>
+        </div>
+        <!-- 3 -->
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label for="name" class="form-label" required>Nombre</label>
+                <input type="text" id="name" class="form-control" formControlName="name">
+                <p class="error" *ngIf="controlError('name', 'required')">El campo es obligatorio</p>
+            </div>
+         
+            <div class="col-md-4 mb-3">
+                <label for="description" class="form-label" required>Descripción</label>
+                <input type="text" id="description" class="form-control" formControlName="description">
+            </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label for="url" class="form-label" required>URL</label>
+                <input type="url" id="url" class="form-control" formControlName="url">
+                <p class="error" *ngIf="controlError('url', 'required')">El campo es obligatorio</p>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="size" class="form-label" required>Talla</label>
+                <select class="form-control" name="size" id="size" formControlName="size">
+                <option *ngIf="isUpdate" selected>{{sizeValue}}</option>
+                    <option value="XS">XXS</option>
+                    <option value="XS">XS</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="XS">L</option>
+                    <option value="XS">XL</option>
+                    <option value="S">XXL</option>
+                    <option value="M">XXL</option>
+                </select> 
+                <p class="error" *ngIf="controlError('size', 'required')">El campo es obligatorio</p>
+            </div>
+        </div>
+    </div>
+
+    <h5 class="mb-1" *ngIf="isUpdate"><b>Resultados</b></h5>
+    <hr class="mb-5" *ngIf="isUpdate">
+    <div class="container" *ngIf="isUpdate">
+        <div class="row">
+            <div class="col-md-12 mb-3">       
+                <input type="checkbox" id="is_exist" class="form-check-input" formControlName="is_exist" >
+                <label for="is_exist" class="form-check-label" required>Existe</label>
+                <p class="error" *ngIf="controlError('is_exist', 'required')">El campo es obligatorio</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mb-3">       
+                <input type="checkbox" id="is_stock" class="form-check-input" formControlName="is_stock">
+                <label for="is_stock" class="form-check-label" required> Stock</label>
+                <p class="error" *ngIf="controlError('is_stock', 'required')">El campo es obligatorio</p>
+            </div>
+        </div>
+    </div>
+
+    <section col-md-12 mb-3>
+        <div class="input d-flex justify-content-end gap-3">
+          <button type="submit" [disabled]="!requestForm.valid" class="btn-edit">{{ buttonName }}</button>
+          <button class="btn-cancel" (click)="cancelar()">Atrás</button>
+          <app-delete-button *ngIf="isUpdate" [url_param]="'camion'" [id]="id"></app-delete-button>
+        </div>
+      </section>
+</form>

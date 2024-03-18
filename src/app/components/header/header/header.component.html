@@ -28,10 +28,10 @@
                         <a class="nav-link" aria-current="page" [routerLink]="['/companies']">Empresas</a>
                     </li>
                     <li class="nav-item" *ngIf="usuariosService.isLogged() && roleValue == roleAdminKey">
-                        <a class="nav-link" aria-current="page" [routerLink]="['/avisos']">Avisos</a>
+                        <a class="nav-link" aria-current="page" [routerLink]="['/requests']">Peticiones</a>
                     </li>
-                    <li class="nav-item" *ngIf="usuariosService.isLogged() && roleValue == roleRegularKey">
-                        <a class="nav-link" aria-current="page" [routerLink]="['/avisos']">Mis avisos</a>
+                    <li class="nav-item" *ngIf="usuariosService.isLogged()">
+                        <a class="nav-link" aria-current="page" [routerLink]="['/misavisos']">Mis avisos</a>
                     </li>
                     <li class="nav-item" *ngIf="usuariosService.isLogged() && roleValue == roleRegularKey">
                         <a class="nav-link" [routerLink]="['/aviso', 'new']">Nuevo aviso</a>

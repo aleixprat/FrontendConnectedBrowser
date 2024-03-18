@@ -38,14 +38,14 @@ export class RequestsService {
   }
 
   // Crear un nuevo camión
-  create(request: Request): Promise <Request>{
+  create(request: Request): Promise <Request | any>{
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json', 
         'Authorization': localStorage.getItem('token_requests_browser')!
       })
     }
-    return lastValueFrom(this.httpClient.post<Request>(`${this.baseUrl}/nuevo`, request, httpOptions))
+    return lastValueFrom(this.httpClient.post<Request>(`${this.baseUrl}`, request, httpOptions))
   }
 
   // Actualizar un nuevo camión

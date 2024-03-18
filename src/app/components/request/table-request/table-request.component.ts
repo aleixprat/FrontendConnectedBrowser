@@ -13,7 +13,7 @@ export class TableRequestComponent {
   requests: any[];
   requestsService = inject(RequestsService);
   notificationService = inject(NotificationsService); 
-
+  url_param : string = "requests";
   
   constructor(private tablaRefreshService: TablaRefreshService) {
     this.requests = [];
