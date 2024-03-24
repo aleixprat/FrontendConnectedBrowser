@@ -83,8 +83,8 @@
     <section col-md-12 mb-3>
         <div class="input d-flex justify-content-end gap-3">
           <button type="submit" [disabled]="!requestForm.valid" class="btn-edit">{{ buttonName }}</button>
-          <button class="btn-cancel" (click)="cancelar()">Atrás</button>
-          <app-delete-button *ngIf="isUpdate" [url_param]="'camion'" [id]="id"></app-delete-button>
+          <button class="btn-cancel" (click)="back()">Atrás</button>
+          <app-delete-button *ngIf="isUpdate && deleteAllowed" [url_param]="url_param" [id]="id"></app-delete-button>
         </div>
       </section>
 </form>

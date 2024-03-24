@@ -1,8 +1,10 @@
 import { Component,inject } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NotificationsService } from 'src/app/services/notifications.service';
 import { UsersService } from 'src/app/services/users.service';
+import { confirmPasswordValidator } from 'src/app/validator/confirm-password.validator';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -13,33 +15,52 @@ export class RegisterComponent {
 
   formValues: FormGroup;
   usersService = inject(UsersService);
-  notificacionesService = inject(NotificationsService);
+  notificationsService = inject(NotificationsService);
   router = inject(Router);
 
   constructor(){
     this.formValues = new FormGroup({
-      username: new FormControl(),
-      email: new FormControl(),
-      password: new FormControl(),
-      telephone: new FormControl()
-    });
+      id: new FormControl('', []),
+      username: new FormControl('', [Validators.required]),
+      email: new FormControl('',[Validators.required]),
+      password: new FormControl('',[Validators.required]),
+      repeat: new FormControl('',[Validators.required]),
+      telephone: new FormControl('',[Validators.required])
+    }, {validators: [confirmPasswordValidator]});
   }
 
   async onSubmit() {
-    const response = await this.usersService.register(this.formValues.value);
+    const user = this.formValues.value;
+    delete user.repeat;
+    const response = await this.usersService.register(user);
 
+    console.log(response);
     //Comprobamos que se ha insertado
     if (!response.insertId) {
-      return this.notificacionesService.showError("Registro erroneo");
+      return this.notificationsService.showError("Registro erroneo");
     }
     
     //Mensaje de error si no va bien
     if (response.fatal) {
-      return this.notificacionesService.showError(response.fatal);
+      return this.notificationsService.showError(response.fatal);
     } 
 
-    //Notificamos que ha ido correctamente y redirigimos para que se haga login
-    this.notificacionesService.showInfo("Se ha registrado correctamente, procede a logearse.");
+    //Lanzamos mensaje de que todo ha ido bien
+    Swal.fire(
+      'Enhorabuena!',
+      'Se ha registrado correctamente ' + user.username + ', procede a logearse.',
+      'success'
+    )
     this.router.navigate(['/login']);
   }
+
+    // Control de errores en formulario
+    controlError(nombreCampo: string, tipoError: string): boolean {
+      if (this.formValues.get(nombreCampo)?.hasError(tipoError) && 
+          this.formValues.get(nombreCampo)?.touched) 
+      {
+        return true
+      }
+      return false
+    }
 }

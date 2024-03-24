@@ -1,7 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, firstValueFrom } from 'rxjs';
+import { BehaviorSubject, firstValueFrom, lastValueFrom } from 'rxjs';
 import { environment } from '../../environments/environment';
+import { User } from '../interfaces/user.interface';
 
 
 @Injectable({
@@ -39,7 +40,7 @@ export class UsersService {
     this._role.next(updateRole);
   }
 
-  register(values: { username: string, email: string, password: string }) {
+  register(values: { username: string, email: string, password: string, telephone: string }) {
     return firstValueFrom(
       this.httpClient.post<any>(`${this.baseUrl}/register`, values)
     )
@@ -55,5 +56,58 @@ export class UsersService {
     return localStorage.getItem('token_requests_browser') ? true : false;
   }
 
+  /** Basico CRUD ****************************/
+  //Obtención de todos los usuarios
+  getAll() : Promise<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_requests_browser')!
+      })
+    }
+    return lastValueFrom(this.httpClient.get<any>(`${this.baseUrl}`,httpOptions)) 
+  }
+
+  //Obtener mediante el ID
+  getById(pId: number) : Promise<User> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_requests_browser')!
+      })
+    }
+    return lastValueFrom(this.httpClient.get<User>(`${this.baseUrl}/${pId}`, httpOptions))
+  }
+
+  // Crear un nuevo camión
+  create(user: User): Promise <User | any>{
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json', 
+        'Authorization': localStorage.getItem('token_requests_browser')!
+      })
+    }
+    return lastValueFrom(this.httpClient.post<User>(`${this.baseUrl}`, user, httpOptions))
+  }
+
+  // Actualizar un nuevo camión
+  update(user: User, id : number): Promise<Request | any>{
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json', 
+        'Authorization': localStorage.getItem('token_requests_browser')!
+      })
+    }
+    return lastValueFrom(this.httpClient.put<User>(`${this.baseUrl}/${id}`, user, httpOptions))
+  }
+
+  // Eliminar un camión
+  delete(id: number): Promise<any>{
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token_requests_browser')!
+      })
+    }
+    return lastValueFrom(this.httpClient.delete<any>(`${this.baseUrl}/${id}`, httpOptions))
+   
+  }
   
 }

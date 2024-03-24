@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Company } from '../interfaces/company.–type=interface';
+import { Company } from '../interfaces/company.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -38,14 +38,14 @@ export class CompaniesService {
   }
 
   // Crear un nuevo camión
-  create(company: Company): Promise <Company>{
+  create(company: Company): Promise <Company | any>{
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json', 
         'Authorization': localStorage.getItem('token_requests_browser')!
       })
     }
-    return lastValueFrom(this.httpClient.post<Company>(`${this.baseUrl}/nuevo`, company, httpOptions))
+    return lastValueFrom(this.httpClient.post<Company>(`${this.baseUrl}`, company, httpOptions))
   }
 
   // Actualizar un nuevo camión

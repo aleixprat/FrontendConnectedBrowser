@@ -10,9 +10,5 @@ export class EditButtonComponent {
   @Input() url_param : string = "";
   @Input() id : number | undefined;
   @Input() isIcon : boolean = false;
-
-  ngOnInit(){
-    console.log(this.url_param + this.id + this.isIcon);
-  }
   
 }

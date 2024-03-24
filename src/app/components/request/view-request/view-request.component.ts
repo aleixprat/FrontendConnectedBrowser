@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Request } from 'src/app/interfaces/request.–type=interface';
+import { Request } from 'src/app/interfaces/request.interface';
 import { NotificationsService } from 'src/app/services/notifications.service';
 import { RequestsService } from 'src/app/services/requests.service';
 import { RolesService } from 'src/app/services/roles.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-view-request',
@@ -20,7 +21,7 @@ export class ViewRequestComponent {
 
   requestForm: FormGroup;
   requestExist: boolean = false; 
-  title: string = 'Registrar';
+  url_param = 'users';
   id: number = 0;
   isUpdate : boolean = false;
   buttonName: string = '';
@@ -107,20 +108,26 @@ export class ViewRequestComponent {
   async submitRequest(){
     //Creamos una nueva petición
     if (!this.isUpdate){
-      
       try{
         const request = this.requestForm.value;
         const response = await this.requestService.create(request);
+
+        //Mensaje de error si no va bien
         if (response.fatal) {
           return this.notificationsService.showError(response.fatal);
         }
-        //Si todo va correcto lo notificamos y mostramos la pantalla de edición
-        this.notificationsService.showInfo("Se ha creado correctamente la petición " + response.id);
-        this.router.navigate(['/requests/' + response.id]);
+
+        //Lanzamos mensaje de que todo ha ido bien
+        Swal.fire(
+          'Enhorabuena!',
+          'Se ha creado la petición con ID ' + response.id + '.',
+          'success'
+        )
+        this.router.navigate(['/'+ this.url_param + '/' + response.id]);
         return;
       }catch(error){
         console.log(error);
-        return alert('No has rellenado los datos del camión correctamente')
+        this.notificationsService.showError('No has rellenado los datos de la request');
       }
     }
     // Se actualiza la petición
@@ -128,7 +135,12 @@ export class ViewRequestComponent {
       const request =  this.requestForm.value;
       delete request["id"];
       const response = await this.requestService.update(request, this.id);
-    
+      
+      //Mensaje de error si no va bien
+      if (response.fatal) {
+        return this.notificationsService.showError(response.fatal);
+      }
+
       this.notificationsService.showInfo("Se ha actualizado correctamente el usuario");
     }catch(error){
       console.log(error);
@@ -137,8 +149,8 @@ export class ViewRequestComponent {
   };
 
   // Botón "Cancelar"
-  cancelar(){
-    this.router.navigate(['/camiones']);
+  back(){
+    this.router.navigate(['/' + this.url_param]);
   }
 
   // Control de errores en formulario

@@ -1,1 +1,77 @@
-<p>view-user works!</p>
+
+<h1 class="mb-1" *ngIf="!isUpdate">Crear nuevo usuario</h1>
+<h1 class="mb-4" *ngIf="isUpdate">ID: {{id}}</h1>
+
+<h5 class="mb-1" *ngIf="isUpdate"><b>Información principal</b></h5>
+<hr class="mb-5">
+
+<form class="template mb-5" [formGroup]="userForm" (ngSubmit)="submitUser()" >
+    <div class="container mb-5">   
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <label for="username" class="form-label" required>Username</label>
+                <input type="text" id="username" class="form-control" formControlName="username">
+                <p class="error" *ngIf="controlError('username', 'required')">El campo es obligatorio</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <label for="email" class="form-label" required>Email</label>
+                <input type="email" id="email" class="form-control" formControlName="email">
+                <p class="error" *ngIf="controlError('email', 'required')">El campo es obligatorio</p>
+            </div>
+        </div>
+        <div class="row" *ngIf="!isUpdate">
+            <div class="col-md-12 mb-3">
+                <label for="password" class="form-label" required>Contraseña</label>
+                <input type="password" id="password" class="form-control" formControlName="password">
+                <p class="error" *ngIf="controlError('password', 'required')">El campo es obligatorio</p>
+            </div>
+        </div>
+        <div class="row" *ngIf="!isUpdate">
+            <div class="col-md-12 mb-3">
+                <label for="repeat" class="form-label" required>Repetir contraseña</label>
+                <input type="password" id="repeat" class="form-control" formControlName="repeat">
+                <p class="error" *ngIf="controlError('repeat', 'required')">El campo es obligatorio</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-3">
+            <label for="role" class="form-label" required>Rol</label>
+            <select class="form-control" name="role" id="role" formControlName="role">
+            <option *ngIf="isUpdate" selected>{{roleValue}}</option>
+                <option value="XS">regular</option>
+                <option value="XS">admin</option>
+            </select> 
+            <p class="error" *ngIf="controlError('role', 'required')">El campo es obligatorio</p>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <label for="telephone" class="form-label" required>Teléfono</label>
+                <input type="text" id="telephone" class="form-control" formControlName="telephone">
+                <p class="error" *ngIf="controlError('telephone', 'required')">El campo es obligatorio</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <label for="img" class="form-label" required>Imágen</label>
+                <input type="text" id="img" class="form-control" formControlName="img">
+                <!--<p class="error" *ngIf="controlError('img', 'required')">El campo es obligatorio</p>-->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mb-3">
+                <label for="name_img" class="form-label" required>Nombre imágen</label>
+                <input type="text" id="name_img" class="form-control" formControlName="name_img">
+                <!--<p class="error" *ngIf="controlError('name_img', 'required')">El campo es obligatorio</p>-->
+            </div>
+        </div>
+    </div>
+
+    <section col-md-12 mb-3>
+        <div class="input d-flex justify-content-end gap-3">
+          <button type="submit" [disabled]="!userForm.valid" class="btn-edit">{{ buttonName }}</button>
+          <button class="btn-cancel" (click)="back()">Atrás</button>
+          <app-delete-button *ngIf="isUpdate && deleteAllowed" [url_param]="url_param" [id]="id"></app-delete-button>
+        </div>
+      </section>
+</form>

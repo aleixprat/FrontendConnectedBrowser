@@ -1,6 +1,10 @@
 <!--<div class="wp">
     <a [hidden]="!elementoHabilitado" [routerLink]="['/',propiedadesTabla.url_param,'nuevo']" class="btn-edit">Crear nuevo</a>
 </div>-->
+<div class="d-flex justify-content-between">
+    <h1 class="mb-4">Peticiones</h1>
+    <app-create-button [url_param]="url_param" [isIcon]="false"></app-create-button>
+</div>
 <hr class="mb-2">
 <div class="table-responsive-sm overflow-x-scroll">
     <table class="table table-striped table-container" > 
@@ -15,7 +19,7 @@
                 <th><span>Usuario</span></th>
                 <th><span>Empresa</span></th>
                 <th><span>Editar</span></th>
-                <th><span>Borrar</span></th>
+                <th *ngIf="deleteAllowed"><span>Borrar</span></th>
             </tr> 
         </thead> 
         <tbody> 
@@ -36,7 +40,7 @@
                 <td>
                     <app-edit-button [url_param]="url_param" [id]="row.id" [isIcon]="true"></app-edit-button>
                 </td>
-                <td>
+                <td *ngIf="deleteAllowed">
                     <app-delete-button [url_param]="url_param" [id]="row.id" [isIcon]="true"></app-delete-button>
                 </td>
             </tr>

@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { NotificationsService } from 'src/app/services/notifications.service';
 import { RequestsService } from 'src/app/services/requests.service';
+import { RolesService } from 'src/app/services/roles.service';
 import { TablaRefreshService } from 'src/app/services/tabla-refresh.service';
 import { UsersService } from 'src/app/services/users.service';
 
@@ -14,6 +15,7 @@ export class TableRequestComponent {
   requestsService = inject(RequestsService);
   notificationService = inject(NotificationsService); 
   url_param : string = "requests";
+  deleteAllowed: boolean = false;
   
   constructor(private tablaRefreshService: TablaRefreshService) {
     this.requests = [];
@@ -23,6 +25,14 @@ export class TableRequestComponent {
     });
   }
 
+  async ngOnInit(): Promise<void> {
+    //Si es admin permitimos eliminar
+    var getRole : any = localStorage.getItem('role_requests_browser');
+    if (getRole == RolesService.roleAdmin) {
+      this.deleteAllowed = true;
+    } 
+  }
+ 
   async printTable() :Promise<void> {
     try{
       let response = await this.requestsService.getAll();
