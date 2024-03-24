@@ -1,0 +1,83 @@
+/*Css para la table*/
+button {
+    border-style: hidden;
+    background: none;
+}
+
+.table {
+    text-align: center;
+    vertical-align: middle;
+    margin-bottom: 1rem;
+}
+
+.table-container {
+    justify-content: center;
+    margin: 0;
+}
+
+.wp {
+    text-align: right;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.new {
+    text-decoration: none;
+    color: black;
+    text-align: right;
+    padding-left: 20px;
+}
+
+.thead {
+    background-color: #4090E6;
+    color: white;
+}
+
+.btn-amarillo {
+    text-decoration: none;
+    color: white;
+    background-color: rgba(224,153,47, 1);
+    border: none;
+    font-size: medium;
+    padding: 10px 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(224,153,47, 1);
+}
+
+.btn-amarillo:hover {
+    background-color: rgba(172, 104, 2,1);
+    border: 1px solid rgba(172, 104, 2,1);
+    color: white;
+}
+
+span {
+    font-size: 14px;
+}
+
+
+
+/*Css para los td*/
+.color-blue {
+    color: rgba(16,93,148, 1);
+    cursor: pointer;
+ }
+
+ .color-green {
+    color: rgb(24, 161, 49);
+    cursor: pointer;
+ }
+
+ .color-orange {
+    color: orange;
+    cursor: pointer;
+ }
+ 
+ .color-gris {
+     color: rgba(224,153,47, 1);
+     cursor: pointer;
+ }
+ 
+ .table-td {
+     padding: 25px 10px 25px 10px;
+ }
+ 

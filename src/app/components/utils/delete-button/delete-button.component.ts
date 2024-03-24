@@ -6,6 +6,7 @@ import { NotificationsService } from 'src/app/services/notifications.service';
 import { TablaRefreshService } from 'src/app/services/tabla-refresh.service';
 import { RequestsService } from 'src/app/services/requests.service';
 import { CompaniesService } from 'src/app/services/companies.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-delete-button',
@@ -25,6 +26,8 @@ export class DeleteButtonComponent {
   activatedRoute= inject(ActivatedRoute);
   requestsService = inject(RequestsService);
   companiesService = inject(CompaniesService);
+  usersService = inject(UsersService);
+  nombreMensaje : string = "";
 
 
   modalDelete(url_name:string,id: number | undefined) : void {
@@ -54,11 +57,17 @@ export class DeleteButtonComponent {
       //Miramos que servicio debemos consultar
       let response : any;
       switch (url_name) {
-        case 'aviso':
+        case 'requests':
           response = await this.requestsService.delete(id);
+          this.nombreMensaje = "la petición";
           break;
-        case 'company':
+        case 'companies':
           response = await this.companiesService.delete(id);
+          this.nombreMensaje = "la empresa";
+          break;
+        case 'users':
+          response = await this.usersService.delete(id);
+          this.nombreMensaje = "el usuario";
           break;
         default: 
           this.notificationsService.showError("no esta bien programado error con el parametro url_param");
@@ -76,7 +85,7 @@ export class DeleteButtonComponent {
       //Lanzamos mensaje de que todo ha ido bien
       Swal.fire(
         'Borrado!',
-        'Se a borrado el ' + url_name + ' ' + response.username + ' correctamente.',
+        'Se a borrado ' + this.nombreMensaje + ' ' + response.id + ' correctamente.',
         'success'
       )
       

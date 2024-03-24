@@ -30,7 +30,7 @@
                     <li class="nav-item" *ngIf="usuariosService.isLogged() && roleValue == roleAdminKey">
                         <a class="nav-link" aria-current="page" [routerLink]="['/requests']">Peticiones</a>
                     </li>
-                    <li class="nav-item" *ngIf="usuariosService.isLogged()">
+                    <li class="nav-item" *ngIf="usuariosService.isLogged() && roleValue == roleRegularKey">
                         <a class="nav-link" aria-current="page" [routerLink]="['/misavisos']">Mis avisos</a>
                     </li>
                     <li class="nav-item" *ngIf="usuariosService.isLogged() && roleValue == roleRegularKey">

@@ -1,1 +1,44 @@
-<p>view-company works!</p>
+
+<h1 class="mb-1" *ngIf="!isUpdate">Crear nueva empresa</h1>
+<h1 class="mb-4" *ngIf="isUpdate">ID: {{id}}</h1>
+
+<h5 class="mb-1" *ngIf="isUpdate"><b>Información principal</b></h5>
+<hr class="mb-5">
+
+<form class="template mb-5" [formGroup]="companyForm" (ngSubmit)="submitRequest()" >
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label for="name" class="form-label" required>Nombre</label>
+                <input type="text" id="name" class="form-control" formControlName="name">
+                <p class="error" *ngIf="controlError('name', 'required')">El campo es obligatorio</p>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="description" class="form-label" required>Descripción</label>
+                <input type="text" id="description" class="form-control" formControlName="description">
+                <p class="error" *ngIf="controlError('description', 'required')">El campo es obligatorio</p>
+            </div>
+        </div>
+        <!-- 3 -->
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label for="img" class="form-label" required>Imágen</label>
+                <input type="text" id="img" class="form-control" formControlName="img">
+            </div>
+         
+            <div class="col-md-4 mb-3">
+                <label for="name_img" class="form-label" required>Nombre imágen</label>
+                <input type="text" id="name_img" class="form-control" formControlName="name_img">
+            </div>
+        </div>
+       
+    </div>
+
+    <section col-md-12 mb-3>
+        <div class="input d-flex justify-content-end gap-3">
+          <button type="submit" [disabled]="!companyForm.valid" class="btn-edit">{{ buttonName }}</button>
+          <button class="btn-cancel" (click)="back()">Atrás</button>
+          <app-delete-button *ngIf="isUpdate && deleteAllowed" [url_param]="url_param" [id]="id"></app-delete-button>
+        </div>
+      </section>
+</form>

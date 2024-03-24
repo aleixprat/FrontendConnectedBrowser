@@ -7,8 +7,6 @@ import { TableCompanyComponent } from './components/company/table-company/table-
 import { RoleGuard } from './guards/role.guard';
 import { RolesService } from './services/roles.service';
 import { ViewCompanyComponent } from './components/company/view-company/view-company.component';
-import { UpsertCompanyComponent } from './components/company/upsert-company/upsert-company.component';
-import { UpsertUserComponent } from './components/user/upsert-user/upsert-user.component';
 import { TableUserComponent } from './components/user/table-user/table-user.component';
 import { ViewUserComponent } from './components/user/view-user/view-user.component';
 import { RegisterComponent } from './components/register/register/register.component';
@@ -55,13 +53,13 @@ const routes: Routes = [
     canActivate: [LoginGuard,RoleGuard],
     data: {role : [RolesService.roleRegular, RolesService.roleAdmin]}
   },
-  { path: 'companies/:id', 
+  { path: 'companies/new', 
     component: ViewCompanyComponent,
     canActivate: [LoginGuard,RoleGuard],
     data: {role : [ RolesService.roleAdmin]}
   },
-  { path: 'companies/new', 
-    component: UpsertCompanyComponent,
+  { path: 'companies/:id', 
+    component: ViewCompanyComponent,
     canActivate: [LoginGuard,RoleGuard],
     data: {role : [ RolesService.roleAdmin]}
   },
@@ -70,16 +68,16 @@ const routes: Routes = [
     canActivate: [LoginGuard,RoleGuard],
     data: {role : [ RolesService.roleAdmin]}
   },
-  { path: 'users/:id', 
+  { path: 'users/new', 
     component: ViewUserComponent,
     canActivate: [LoginGuard,RoleGuard],
     data: {role : [ RolesService.roleAdmin]}
   },
-  { path: 'users/new', 
-    component: UpsertUserComponent,
+  { path: 'users/:id', 
+    component: ViewUserComponent,
     canActivate: [LoginGuard,RoleGuard],
     data: {role : [ RolesService.roleAdmin]}
-  },
+  }, 
   { path: 'profile', 
     component: ViewProfileComponent,
     canActivate: [LoginGuard,RoleGuard],
