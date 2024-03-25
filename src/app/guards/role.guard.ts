@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 //Verificamos que el rol que le llega como parametro en el ActivatedRouteSnapshot,
 //sea uno de los roles que le pasamos en el routing, si es asi dejamos
 //pasar - APSP
-export class RoleGuard implements CanActivate {
+export class RoleGuard  {
   constructor(private router : Router) {}
   
   canActivate(route: ActivatedRouteSnapshot) : boolean {
