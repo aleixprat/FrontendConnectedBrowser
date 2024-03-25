@@ -27,7 +27,11 @@
                 <td class="table-td">{{row.email}}</td>
                 <td class="table-td">{{row.role}}</td>
                 <td class="table-td">{{row.telephone}}</td>
-                <td class="table-td">{{row.name_img}}</td>
+                <td class="table-td">
+                    <figure class="img-figure">
+                        <img [alt]="row.name_img" [src]=row.img appNoImage/>
+                    </figure>
+                </td>
                 <td>
                     <app-edit-button [url_param]="url_param" [id]="row.id" [isIcon]="true"></app-edit-button>
                 </td>

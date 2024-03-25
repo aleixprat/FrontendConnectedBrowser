@@ -14,7 +14,6 @@
                 <th><span>Nombre</span></th> 
                 <th><span>Descripción</span></th> 
                 <th><span>Imágen</span></th> 
-                <th><span>Nombre imágen</span></th> 
                 <th><span>Editar</span></th>
                 <th *ngIf="deleteAllowed"><span>Borrar</span></th>
             </tr> 
@@ -26,8 +25,11 @@
                 <td class="table-td">{{row.id}}</td>
                 <td class="table-td">{{row.name}}</td>
                 <td class="table-td">{{row.description}}</td>
-                <td class="table-td">{{row.img}}</td>
-                <td class="table-td">{{row.name_img}}</td>
+                <td class="table-td">
+                    <figure class="img-figure">
+                        <img [alt]="row.name_img" [src]=row.img appNoImage/>
+                    </figure>
+                </td>
                 <td>
                     <app-edit-button [url_param]="url_param" [id]="row.id" [isIcon]="true"></app-edit-button>
                 </td>

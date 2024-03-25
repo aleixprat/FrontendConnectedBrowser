@@ -26,6 +26,7 @@ import { ViewAvisoComponent } from './components/aviso/view-aviso/view-aviso.com
 import { UpsertAvisoComponent } from './components/aviso/upsert-aviso/upsert-aviso.component';
 import { EditButtonComponent } from './components/utils/edit-button/edit-button.component';
 import { CreateButtonComponent } from './components/utils/create-button/create-button.component';
+import { NoImageDirective } from './directives/no-image.directive';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { CreateButtonComponent } from './components/utils/create-button/create-b
     ViewAvisoComponent,
     UpsertAvisoComponent,
     EditButtonComponent,
-    CreateButtonComponent
+    CreateButtonComponent,
+    NoImageDirective
   ],
   imports: [
     BrowserModule,

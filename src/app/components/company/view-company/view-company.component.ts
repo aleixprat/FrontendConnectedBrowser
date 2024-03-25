@@ -23,6 +23,7 @@ export class ViewCompanyComponent {
   id: number = 0;
   isUpdate : boolean = false;
   buttonName: string = '';
+  img_value: string = '';
 
   deleteAllowed : boolean = false;
 
@@ -45,6 +46,13 @@ export class ViewCompanyComponent {
     if (getRole == RolesService.roleAdmin) {
       this.deleteAllowed = true;
     } 
+
+    const imgControl = this.companyForm.get('img');
+    if (imgControl) {
+      imgControl.valueChanges.subscribe((newValue) => {
+        this.img_value = newValue; // Actualizar el campo 'name_img' con el mismo valor
+      });
+    }
 
     //Recuperamos parametros
     this.activatedRoute.params.subscribe(async (params:any)=> {

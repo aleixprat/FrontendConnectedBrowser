@@ -78,6 +78,18 @@ span {
  }
  
  .table-td {
-     padding: 25px 10px 25px 10px;
- }
- 
+    padding: 25px 10px 25px 10px;
+}
+
+.img-figure {
+   max-width: 300px;
+   height: auto;
+   padding: 10px;
+   border: 1px solid black;
+   display: inline-block;
+}
+img {
+   width: 100%;
+   height: auto;
+   display: block;
+}
