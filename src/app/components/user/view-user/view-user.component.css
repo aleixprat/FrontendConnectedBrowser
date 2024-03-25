@@ -1,0 +1,4 @@
+.scrollable-swal {
+    overflow-y: scroll !important;
+    max-height: 80vh !important;
+  }

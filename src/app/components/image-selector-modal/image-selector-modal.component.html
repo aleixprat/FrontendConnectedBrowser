@@ -1,0 +1,12 @@
+<!-- image-selector-modal.component.html -->
+<div class="modal-header">
+    <h4 class="modal-title">Selecciona una imagen</h4>
+    <button type="button" class="close" aria-label="Close" (click)="bsModalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div *ngFor="let imageSrc of images">
+      <img [src]="imageSrc" (click)="selectImage(imageSrc)" />
+    </div>
+  </div>

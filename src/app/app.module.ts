@@ -27,6 +27,7 @@ import { UpsertAvisoComponent } from './components/aviso/upsert-aviso/upsert-avi
 import { EditButtonComponent } from './components/utils/edit-button/edit-button.component';
 import { CreateButtonComponent } from './components/utils/create-button/create-button.component';
 import { NoImageDirective } from './directives/no-image.directive';
+import { ImageSelectorModalComponent } from './components/image-selector-modal/image-selector-modal.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { NoImageDirective } from './directives/no-image.directive';
     UpsertAvisoComponent,
     EditButtonComponent,
     CreateButtonComponent,
-    NoImageDirective
+    NoImageDirective,
+    ImageSelectorModalComponent
   ],
   imports: [
     BrowserModule,
