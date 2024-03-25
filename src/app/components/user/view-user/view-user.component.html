@@ -5,8 +5,8 @@
 <h5 class="mb-1" *ngIf="isUpdate"><b>Información principal</b></h5>
 <hr class="mb-5">
 
-<!-- image-selector.component.html 
-<button (click)="openImageSelectorModal()">Seleccionar imagen</button>-->
+<!-- image-selector.component.html -->
+<button (click)="openImageSelectorModal()">Seleccionar imagen</button>
 
 
 <form class="template mb-5" [formGroup]="userForm" (ngSubmit)="submitUser()" >
@@ -57,9 +57,9 @@
         </div>
         <div class="row">
             <div class="col-md-12 mb-3">
-                <label for="img" class="form-label" required>Imágen</label>
-                <input type="text" id="img" class="form-control" formControlName="img">
-                <!--<p class="error" *ngIf="controlError('img', 'required')">El campo es obligatorio</p>-->
+                <figure class="img-figure">
+                    <img [alt]=img_name_alt id="img" formControlName="img"[src]=img_selected_src appNoImage/>
+                </figure>
             </div>
         </div>
         <div class="row">

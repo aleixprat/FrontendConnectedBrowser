@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ModalModule } from 'ngx-bootstrap/modal';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
@@ -57,6 +58,7 @@ import { ImageSelectorModalComponent } from './components/image-selector-modal/i
   ],
   imports: [
     BrowserModule,
+    ModalModule.forRoot(),
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,

@@ -1,4 +1,12 @@
-.scrollable-swal {
-    overflow-y: scroll !important;
-    max-height: 80vh !important;
-  }
+.img-figure {
+    max-width: 300px;
+    height: auto;
+    padding: 10px;
+    display: inline-block;
+    border-radius: 50%;
+ }
+ img {
+    width: 100%;
+    height: auto;
+    display: block;
+ }

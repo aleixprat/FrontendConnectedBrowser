@@ -2,12 +2,11 @@ import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/interfaces/user.interface';
-import { ImagesPathService } from 'src/app/services/images-path.service';
 import { NotificationsService } from 'src/app/services/notifications.service';
 import { RolesService } from 'src/app/services/roles.service';
 import { UsersService } from 'src/app/services/users.service';
 import { confirmPasswordValidator } from 'src/app/validator/confirm-password.validator';
-//import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import Swal from 'sweetalert2';
 import { ImageSelectorModalComponent } from '../../image-selector-modal/image-selector-modal.component';
 
@@ -21,7 +20,6 @@ export class ViewUserComponent {
   router = inject(Router);
   activatedRoute = inject(ActivatedRoute);
   notificationsService = inject(NotificationsService)
-  imagesPathService = inject(ImagesPathService);
 
   userForm: FormGroup;
   url_param : string = "users";
@@ -30,7 +28,8 @@ export class ViewUserComponent {
   buttonName: string = '';
   roleValue: string = '';
   deleteAllowed : boolean = false;
-  img_selected_src: string = '';
+  img_selected_src : string = '';
+  img_name_alt : string = '';
   rutasDeImagenes: string[] = [
     '/assets/images/avatars/hombre.png',
     '/assets/images/avatars/hombre_2.png',
@@ -44,8 +43,8 @@ export class ViewUserComponent {
     '/assets/images/avatars/mujer_3.png'
   ];
 
-//private modalService: BsModalService
-  constructor(){
+
+  constructor(private modalService: BsModalService){
     this.userForm = new FormGroup({
       id: new FormControl('', []),
       username: new FormControl('', [Validators.required]),
@@ -63,8 +62,7 @@ export class ViewUserComponent {
 
   async ngOnInit(): Promise<void> {
 
-    //Inicializo imágenes
-    //this.obtenerRutasDeImagenes(); //Descomentar en productivo
+    
 
     //Si es admin permitimos eliminar
     var getRole : any = localStorage.getItem('role_requests_browser');
@@ -105,7 +103,8 @@ export class ViewUserComponent {
   rellenarCamposForm(response : any) {
     const user: User = response;
     this.roleValue = user.role;
-    console.log(this.roleValue);
+    this.img_selected_src = user.img;
+    this.img_name_alt = user.name_img;
 
     this.userForm = new FormGroup({
       id: new FormControl(user.id,[]),
@@ -163,7 +162,8 @@ export class ViewUserComponent {
       this.notificationsService.showError('No se ha actualizado correctamente el usuario.');
     }
   };
-  /*
+
+  //Para seleccionar la imágen
   openImageSelectorModal() {
     const initialState = {
       images: this.rutasDeImagenes
@@ -171,17 +171,9 @@ export class ViewUserComponent {
     const modalRef: BsModalRef = this.modalService.show(ImageSelectorModalComponent, { initialState });
     modalRef.content.imageSelected.subscribe((imageSrc: string) => {
       this.img_selected_src = imageSrc;
+      this.userForm.get('img')?.setValue(imageSrc);
     });
-  }*/
-  //Para recorrer las imágenes almacenadas en productivo.
-  /*Por ahora recorro el array manual
-  obtenerRutasDeImagenes(): void {
-    this.imagesPathService.obtenerRutasDeImagenes()
-      .subscribe(rutas => {
-        this.rutasDeImagenes = rutas;
-      });
   }
-  */
 
   // Botón "Cancelar"
   back(){

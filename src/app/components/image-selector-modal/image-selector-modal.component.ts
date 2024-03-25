@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-//import { BsModalRef } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-image-selector-modal',
@@ -10,10 +10,10 @@ export class ImageSelectorModalComponent {
   @Input() images: string[] = [];
   @Output() imageSelected = new EventEmitter<string>();
 
-  constructor(/*public bsModalRef: BsModalRef*/) {}
+  constructor(public bsModalRef: BsModalRef) {}
 
   selectImage(imageSrc: string) {
     this.imageSelected.emit(imageSrc);
-    //this.bsModalRef.hide();
+    this.bsModalRef.hide();
   }
 }

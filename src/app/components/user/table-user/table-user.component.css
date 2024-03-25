@@ -85,7 +85,7 @@ span {
    max-width: 300px;
    height: auto;
    padding: 10px;
-   border: 1px solid black;
+   border-radius: 50%;
    display: inline-block;
 }
 img {

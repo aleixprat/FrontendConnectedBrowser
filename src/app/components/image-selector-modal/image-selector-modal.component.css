@@ -1,0 +1,39 @@
+
+.modal-title {
+    margin-inline: auto;
+}
+
+.modal-dialog {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background-color: #fff; /* Cambia el color de fondo de la modal si es necesario */
+    border-radius: 10px; /* Ajusta el radio de borde según sea necesario */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Agrega sombra para resaltar la modal */
+  }
+  
+  .modal-body {
+    padding: 20px; /* Ajusta el relleno según sea necesario */
+    display: ruby-text;
+  }
+  
+  .container-img {
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Agrega una transición suave al efecto hover */
+  }
+  
+  .container-img:hover {
+    transform: scale(1.1); /* Escala ligeramente la imagen al pasar el ratón por encima */
+  }
+  
+  img {
+    display: block;
+    padding: 10px;
+    width: 200px;
+    height: auto;
+    border-radius: 5px; /* Ajusta el radio de borde según sea necesario */
+  }
