@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-md-4 mb-3">
                 <label for="img" class="form-label" required>Imágen</label>
-                <input type="text" id="img" class="form-control" formControlName="img">
+                <input (input)="updateImg($event)" type="text" id="img" class="form-control" formControlName="img">
             </div>
          
             <div class="col-md-4 mb-3">
@@ -34,7 +34,7 @@
         <div class="row">
             <div class="col--md-4 mb-3">
                 <figure class="img-figure">
-                    <img [src]=img_value appNoImage/>
+                    <img [alt]=img_name_alt  [src]=img_value appNoImage/>
                 </figure>
             </div>
         </div>

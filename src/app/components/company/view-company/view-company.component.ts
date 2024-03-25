@@ -23,8 +23,8 @@ export class ViewCompanyComponent {
   id: number = 0;
   isUpdate : boolean = false;
   buttonName: string = '';
-  img_value: string = '';
-
+  img_value : string = '';
+  img_name_alt : string = '';
   deleteAllowed : boolean = false;
 
   constructor(){
@@ -46,13 +46,6 @@ export class ViewCompanyComponent {
     if (getRole == RolesService.roleAdmin) {
       this.deleteAllowed = true;
     } 
-
-    const imgControl = this.companyForm.get('img');
-    if (imgControl) {
-      imgControl.valueChanges.subscribe((newValue) => {
-        this.img_value = newValue; // Actualizar el campo 'name_img' con el mismo valor
-      });
-    }
 
     //Recuperamos parametros
     this.activatedRoute.params.subscribe(async (params:any)=> {
@@ -80,11 +73,17 @@ export class ViewCompanyComponent {
     }
   )}
 
-
-
+  //Para cuando se modifique la imágen del input -----------------------------------------------
+  updateImg($event: any): void {
+    let getImgValue = $event.target.value;
+    this.img_value = getImgValue;
+  }
+  
   // Rellena los campos si quiere actualizar el camión
   rellenarCamposForm(response : any) {
     const company: Company = response;
+    this.img_name_alt = company.name_img
+    this.img_value = company.img;
 
     this.companyForm = new FormGroup({
       id: new FormControl(company.id,[]),
