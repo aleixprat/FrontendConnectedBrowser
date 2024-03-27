@@ -1,0 +1,117 @@
+footer {
+    margin-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.25);
+    background-color: #f0f0f0;
+}
+
+.wrapper-footer {
+    margin: 0 auto;
+    padding-left:40px;
+    padding-right:40px;
+
+}
+
+.footer-section-title{
+    margin-bottom: 20px;
+}
+
+/* Sección listado páginas *******************************/
+.footer-list-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block
+}
+
+.footer-list-items li {
+    text-align: left; /* Alinea el texto de los <li> a la izquierda */
+    margin-bottom: 5px; /* Espaciado entre los elementos <li> */
+    
+}
+.footer-list-items li a {
+    opacity: 0.85;
+    cursor: pointer; /* Cambia el cursor a pointer */
+    text-decoration: underline; /* Subraya el texto */
+}
+
+.footer-list-items li a:hover {
+    color: black; /* Cambia el color del texto al pasar el mouse */
+}
+.footer-list-items i{
+    font-size: 24px; /* Tamaño del ícono */
+    color: rgba(0, 0, 0, 0.25); /* Color del ícono */
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.footer-list-items i:hover{
+    opacity: 0.85;
+    color:black;
+    cursor: pointer; /* Cambia el cursor a pointer */
+}
+
+
+
+/*Sección de abajo**************************/
+.footer-bottom-section {
+    padding: 10px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-left {
+    display: flex;
+}
+
+.payment-types {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.payment-types li {
+    margin-right: 20px;
+    display: inline-block;
+}
+
+.payment-types li img {
+    max-width: 80px; /* Establecer un límite de tamaño razonable */
+    max-height: 30px; /* Establecer un límite de tamaño razonable */
+}
+
+.footer-right {
+    text-align: right;
+}
+
+.footer-right p {
+    margin: 0;
+}
+
+/* Sección suscribirse ***********************************************/
+.subscribe-box {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.subscribe-box input[type="email"] {
+    padding: 10px; /* Ajustar el relleno del input */
+    border: none;
+    border-bottom: 1px solid #ccc; /* Línea inferior */
+    background-color: #f0f0f0; /* Color de fondo del input */
+    width: 300px; /* Hace que el input ocupe todo el ancho disponible menos el ancho del botón y el espacio entre ellos */
+    margin-right: 10px;
+}
+
+.subscribe-box button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: -4px; /* Ajuste negativo para eliminar el espacio entre el input y el botón */
+}

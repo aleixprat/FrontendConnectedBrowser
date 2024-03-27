@@ -59,7 +59,6 @@ export class LoginComponent {
     this.usersService.changeRole(tokenDecode.user_role);
 
     //Notificamps que ha ido bien y redirigimos a avisos
-    this.notificacionesService.showInfo("Se ha logeado correctamente.");
     this.router.navigate(['/avisos']);
   }
 
