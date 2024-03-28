@@ -95,23 +95,3 @@ footer {
     display: flex;
     justify-content: center;
 }
-
-
-.subscribe-box input[type="email"] {
-    padding: 10px; /* Ajustar el relleno del input */
-    border: none;
-    border-bottom: 1px solid #ccc; /* Línea inferior */
-    background-color: #f0f0f0; /* Color de fondo del input */
-    width: 300px; /* Hace que el input ocupe todo el ancho disponible menos el ancho del botón y el espacio entre ellos */
-    margin-right: 10px;
-}
-
-.subscribe-box button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: -4px; /* Ajuste negativo para eliminar el espacio entre el input y el botón */
-}

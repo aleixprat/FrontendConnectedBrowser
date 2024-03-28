@@ -1,53 +1,48 @@
-<nav class="nav-princial navbar navbar-dark bg-dark navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-        
-      <img  class="navbar-brand logo-img border" src="https://img.freepik.com/vector-premium/cuadrado-colorido_530521-281.jpg" alt="">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <!--<div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="navbar-brand nav-item">
-            <a class="nav-link active" aria-current="page" [routerLink]="['/home']">Home</a>
-          </li>
-        </ul>
-        <a class="no-style" [routerLink]="['/newuser']">Usuario nuevo</a>
-      </div>-->
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Avisame</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item" *ngIf="usuariosService.isLogged() && roleValue == roleAdminKey">
-                        <a class="nav-link" aria-current="page" [routerLink]="['/users']">Usuarios</a>
-                    </li>
-                    <li class="nav-item" *ngIf="usuariosService.isLogged() && roleValue == roleAdminKey">
-                        <a class="nav-link" aria-current="page" [routerLink]="['/companies']">Empresas</a>
-                    </li>
-                    <li class="nav-item" *ngIf="usuariosService.isLogged() && roleValue == roleAdminKey">
-                        <a class="nav-link" aria-current="page" [routerLink]="['/requests']">Peticiones</a>
-                    </li>
-                    <li class="nav-item" *ngIf="usuariosService.isLogged() && roleValue == roleRegularKey">
-                        <a class="nav-link" aria-current="page" [routerLink]="['/misavisos']">Mis avisos</a>
-                    </li>
-                    <li class="nav-item" *ngIf="usuariosService.isLogged() && roleValue == roleRegularKey">
-                        <a class="nav-link" [routerLink]="['/aviso', 'new']">Nuevo aviso</a>
-                    </li>
-                    <li class="nav-item" *ngIf="!usuariosService.isLogged()">
-                        <a class="nav-link" [routerLink]="['/login']">Login</a>
-                    </li>
-                    <li class="nav-item" *ngIf="!usuariosService.isLogged()">
-                        <a class="nav-link" [routerLink]="['/register']">Registro</a>
-                    </li>
-                    <li class="nav-item" *ngIf="usuariosService.isLogged()">
-                        <a class="nav-link" (click)="onClickLogout()">Logout</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+
+<div class="header wrapper-header">
+    <div class="header-nav-1">
+        <a href="#">Avísame</a>
     </div>
-</nav>
+    <div class="nav-2">
+        <div class="search-icon">
+            <i class="fas fa-search" [ngStyle]="{'color': iconColorBefore}" [ngClass]="{'hidden': !showSearchIconBefore}"></i>
+        </div>
+        <div class="search-box">
+            <input type="text" class="input-light" placeholder="Buscar..." [(ngModel)]="searchQuery" (input)="updateIconColor()">
+            <a href="#">
+                <i class="fas fa-search" [ngStyle]="{'color': iconColorAfter}" [ngClass]="{'hidden': !showSearchIconAfter}"></i>
+            </a>
+        </div>
+    </div>
+    <nav class="nav-3">
+        <ul class="header-nav-3">
+            <li  *ngIf="usuariosService.isLogged() && roleValue == roleAdminKey">
+                <a aria-current="page" [routerLink]="['/users']">Novedades</a>
+            </li>
+            <li  *ngIf="usuariosService.isLogged() && roleValue == roleAdminKey">
+                <a aria-current="page" [routerLink]="['/users']">Usuarios</a>
+            </li>
+            <li  *ngIf="usuariosService.isLogged() && roleValue == roleAdminKey">
+                <a aria-current="page" [routerLink]="['/companies']">Empresas</a>
+            </li>
+            <li  *ngIf="usuariosService.isLogged() && roleValue == roleAdminKey">
+                <a class="button-blue link-white" aria-current="page" [routerLink]="['/requests']">Peticiones</a>
+            </li>
+            <li  *ngIf="usuariosService.isLogged() && roleValue == roleRegularKey">
+                <a class="button-blue link-white" aria-current="page" [routerLink]="['/misavisos']">Mis avisos</a>
+            </li>
+            <li  *ngIf="usuariosService.isLogged() && roleValue == roleRegularKey">
+                <a [routerLink]="['/aviso', 'new']">Nuevo aviso</a>
+            </li>
+            <li  *ngIf="!usuariosService.isLogged()">
+                <a [routerLink]="['/login']">Login</a>
+            </li>
+            <li  *ngIf="!usuariosService.isLogged()">
+                <a [routerLink]="['/register']">Registro</a>
+            </li>
+            <li  *ngIf="usuariosService.isLogged()">
+                <a (click)="onClickLogout()">Logout</a>
+            </li>
+        </ul>
+    </nav>
+</div>

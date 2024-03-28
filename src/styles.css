@@ -1,7 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
 * {
     box-sizing: border-box;
-    font-family: sans-serif;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, sans-serif, Arial;
+    font-weight: 400;
+}
+
+/* Estilo input *****************/
+.input-dark {
+    padding: 10px; /* Adjust input padding */
+    border: none;
+    border-bottom: 1px solid #555; /* Bottom line */
+    background-color: #333; /* Dark input background color */
+    color: #fff; /* Text color */
+    width: 300px; /* Make the input occupy all available width minus the button width and space between them */
+    margin-right: 10px;
+}
+.input-normal {
+    padding: 10px; /* Ajustar el relleno del input */
+    border: none;
+    border-bottom: 1px solid #ccc; /* Línea inferior */
+    background-color: #f0f0f0; /* Color de fondo del input */
+    width: 300px; /* Hace que el input ocupe todo el ancho disponible menos el ancho del botón y el espacio entre ellos */
+    margin-right: 10px;
+}
+
+.input-light {
+    padding: 10px; /* Adjust input padding */
+    border: none;
+    border-bottom: 1px solid #ccc; /* Bottom line */
+    background-color: white; /* Light input background color */
+    width: 300px; /* Make the input occupy all available width minus the button width and space between them */
+    margin-right: 10px;
+}
+
+/*Estilo botones ********************/
+.button-blue {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: -4px; /* Ajuste negativo para eliminar el espacio entre el input y el botón */
 }
 
 /* Color Theme Swatches in RGBA */

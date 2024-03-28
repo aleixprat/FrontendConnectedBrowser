@@ -1,4 +1,21 @@
-.main-container{
-    margin-top: 80px;
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: transparent; /* Fondo transparente por defecto */
+    transition: background-color 0.3s ease; /* Transición suave para el cambio de color de fondo */
+    z-index: 100; /* Asegurar que el header esté por encima del contenido del main */
+    border-bottom:1px solid #cdc8c8;
+    background-color: rgb(255, 255, 255,0.6);
+}
+  
+.wrapper-main{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1440px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 150px;
     margin-bottom: 80px;
 }

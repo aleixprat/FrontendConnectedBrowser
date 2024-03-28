@@ -1,15 +1,121 @@
-.logo-img {
-    width: 30px;
-    border-radius: 20px;
+
+/*Estilos generales menú ************/
+ .wrapper-header {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1440px;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
 }
 
-.no-style{
-   color: rgb(255, 255, 255,0.55);
-   text-decoration: none;
-   font-size: 18px;
+ .header {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    min-height: 85px;
 }
 
-.no-style:hover{
-    color: white;
-   text-decoration: none;
- }
+ /* nav 1 (título) *************/
+.header-nav-1 {
+    font-weight: bold;
+}
+
+.header-nav-1 a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 20px;
+}
+
+
+/* nav 2 (buscador)  *********/
+.nav-2 {
+    display: flex;
+    align-items: center;
+}
+
+.menu-icon, .search-icon {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.search-icon i {
+    transition: opacity 0.3s ease-in-out; /* Transición de opacidad */
+}
+
+.search-box {
+    position: relative;
+}
+
+.search-box a {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-decoration: none;
+}
+
+.search-box i {
+    transition: opacity 0.3s ease-in-out; /* Transición de opacidad */
+}
+
+.search-box a:hover i {
+    color: #a4a4a4;
+}
+
+.hidden {
+    opacity: 0; /* Oculta el ícono cuando la clase hidden está presente */
+}
+
+
+
+/* nav 3 (titulos principales) *********/
+.nav-3 {
+    display: none;
+}
+
+.header-nav-3 {
+    display: flex;    
+    gap:22px;
+    list-style: none;
+    align-items: center;
+    margin: 0 auto;
+}
+.nav-3 .header-nav-3 li a.link-white {
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav-3 .header-nav-3 li a.link-white:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+.header-nav-3 a {
+    text-decoration: none;
+    color: #000000;
+}
+
+.header-nav-3 li a:hover {
+    text-decoration: none;
+    color: #0066ff;
+}
+
+
+
+
+/* Estilo por defecto *******************/
+
+@media (min-width: 1024px) {
+
+    
+    /* Clases header *******************************/
+
+    .header {
+        justify-content: space-between;
+    }
+    .nav-3 {
+        display: block;
+    }
+    
+
+}

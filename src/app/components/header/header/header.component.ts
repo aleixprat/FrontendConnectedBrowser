@@ -17,6 +17,12 @@ export class HeaderComponent {
   roleAdminKey: String = RolesService.roleAdmin;
   roleRegularKey: String = RolesService.roleRegular;
 
+  searchQuery: string = '';
+  iconColorBefore: string = 'black';
+  iconColorAfter: string = '#fff';
+  showSearchIconBefore: boolean = true;
+  showSearchIconAfter: boolean = false;
+
   ngOnInit() {
     this.usuariosService.logged.subscribe(value => {
       console.log(`Observable: ${value}`);
@@ -27,6 +33,21 @@ export class HeaderComponent {
       this.roleValue = value;
     });
   }
+
+  updateIconColor(): void {
+    if (this.searchQuery.trim() !== '') {
+        this.iconColorBefore = '#fff';
+        this.iconColorAfter = 'black';
+        this.showSearchIconBefore = false;
+        this.showSearchIconAfter = true;
+    } else {
+        this.iconColorBefore = 'black';
+        this.iconColorAfter = '#fff';
+        this.showSearchIconBefore = true;
+        this.showSearchIconAfter = false;
+    }
+  }
+  
 
   onClickLogout() {
     localStorage.removeItem('token_requests_browser');
